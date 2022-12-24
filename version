@@ -1,0 +1,23 @@
+version: '3'
+services:
+      web1: 
+      image: httpd
+      ports:
+        - 9000:80
+      networks:
+        - net
+      volumes:
+        - /web1/:/usr/local/apache2/htdocs
+      web2:
+      image: nginx
+      ports:
+        - 9001:80
+      networks: 
+        - net
+      c1:
+      image: ubuntu:20.04
+      tty: true
+      stdin_open: true
+networks:
+      net:
+        external: true
